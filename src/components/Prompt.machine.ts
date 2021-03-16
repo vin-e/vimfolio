@@ -26,6 +26,10 @@ const PromptMachine = Machine<PromptContext>({
     executedCommands: []
   },
   states: {
+    /**
+     * The booting state is to give the useRef's a chance to bind and render. Then using a useEffect to immediate get us to the ready state
+     * If we did not have the references this state would be useless.
+     */
     booting: {
       on: {
         BOOTED: 'ready'
